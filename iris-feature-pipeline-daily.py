@@ -1,6 +1,6 @@
 import os
 import modal
-
+api_key = os.environ.get('HOPSWORKS_API_KEY')
 LOCAL=True
 
 if LOCAL == False:
