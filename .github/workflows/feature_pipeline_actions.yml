@@ -1,5 +1,8 @@
 name: feature_pipeline_actions
 
+env:
+  HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+  
 on:
   push:
     branches: [ main ]
