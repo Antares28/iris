@@ -1,0 +1,26 @@
+name: feature_pipeline_actions
+
+env:
+  HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+  
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Run feature pipeline
+      run: |
+        python iris-batch-inference-pipeline.py
